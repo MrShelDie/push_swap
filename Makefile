@@ -3,6 +3,18 @@ _SRC_ =					\
 	ft_push_swap.c		\
 	ft_stack.c
 
+_CMD_ =					\
+	ft_pa.c				\
+	ft_pb.c				\
+	ft_ra.c				\
+	ft_rb.c				\
+	ft_rr.c				\
+	ft_rra.c			\
+	ft_rrb.c			\
+	ft_rrr.c			\
+	ft_sa.c				\
+	ft_sb.c
+
 _UTILS_	=				\
 	ft_atoi.c			\
 	ft_bsearch.c		\

@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 23:05:30 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 01:25:09 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/28 02:36:57 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*prev;
 	long int		value;
+	int				min_score;
 	int				rb_score;
 	int				rrb_score;
 	int				ra_score;
@@ -62,6 +63,17 @@ t_stack	*ft_stack_push(t_stack **stack, int value, int *stack_size);
 void	ft_stack_free(t_stack **stack, int *stack_size);
 void	ft_stack_pop(t_stack **stack, int *stack_size);
 void	ft_stack_swap(t_stack *stack);
+
+int		ft_pa(t_prime *prime);
+int		ft_pb(t_prime *prime);
+void	ft_ra(t_prime *prime);
+void	ft_rb(t_prime *prime);
+void	ft_rr(t_prime *prime);
+void	ft_rra(t_prime *prime);
+void	ft_rrb(t_prime *prime);
+void	ft_rrr(t_prime *prime);
+void	ft_sa(t_prime *prime);
+void	ft_sb(t_prime *prime);
 
 int		ft_parse(int argc, char **argv, t_prime *prime);
 

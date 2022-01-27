@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 00:14:02 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 01:28:02 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/28 01:36:25 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_stack	*ft_stack_new(t_stack **stack, int value, int *stack_size)
 	new->next = new;
 	new->prev = new;
 	new->value = value;
+	new->min_score = -1;
 	new->ra_score = -1;
 	new->rb_score = -1;
 	new->rra_score = -1;
@@ -48,6 +49,7 @@ t_stack	*ft_stack_push(t_stack **stack, int value, int *stack_size)
 	(*stack)->prev->next = new;
 	(*stack)->prev = new;
 	new->value = value;
+	new->min_score = -1;
 	new->ra_score = -1;
 	new->rb_score = -1;
 	new->rra_score = -1;

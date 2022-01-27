@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 23:05:30 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 00:45:54 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/28 01:25:09 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ typedef struct s_prime
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	int		stack_a_size;
+	int		stack_b_size;
 }	t_prime;
 
 # define ERROR 0
@@ -55,10 +57,10 @@ int		ft_bsearch(int value, int *arr, int size);
 void	ft_qsort(int *arr, int end_idx);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 
-t_stack	*ft_stack_new(t_stack **stack, int value);
-t_stack	*ft_stack_push(t_stack **stack, int value);
-void	ft_stack_free(t_stack **stack);
-void	ft_stack_pop(t_stack **stack);
+t_stack	*ft_stack_new(t_stack **stack, int value, int *stack_size);
+t_stack	*ft_stack_push(t_stack **stack, int value, int *stack_size);
+void	ft_stack_free(t_stack **stack, int *stack_size);
+void	ft_stack_pop(t_stack **stack, int *stack_size);
 void	ft_stack_swap(t_stack *stack);
 
 int		ft_parse(int argc, char **argv, t_prime *prime);

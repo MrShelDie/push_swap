@@ -6,13 +6,13 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 00:14:02 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 00:31:59 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/28 01:28:02 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_stack_new(t_stack **stack, int value)
+t_stack	*ft_stack_new(t_stack **stack, int value, int *stack_size)
 {
 	t_stack	*new;
 
@@ -28,15 +28,16 @@ t_stack	*ft_stack_new(t_stack **stack, int value)
 	new->rrb_score = -1;
 	new->push_way = NONE;
 	*stack = new;
+	*stack_size = 1;
 	return (new);
 }
 
-t_stack	*ft_stack_push(t_stack **stack, int value)
+t_stack	*ft_stack_push(t_stack **stack, int value, int *stack_size)
 {
 	t_stack	*new;
 
 	if (!*stack)
-		return (ft_stack_new(stack, value));
+		return (ft_stack_new(stack, value, stack_size));
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);
@@ -53,10 +54,11 @@ t_stack	*ft_stack_push(t_stack **stack, int value)
 	new->rrb_score = -1;
 	new->push_way = NONE;
 	(*stack) = new;
+	(*stack_size)++;
 	return (new);
 }
 
-void	ft_stack_free(t_stack **stack)
+void	ft_stack_free(t_stack **stack, int *stack_size)
 {
 	t_stack	*curr;
 	t_stack	*next;
@@ -70,16 +72,17 @@ void	ft_stack_free(t_stack **stack)
 		curr = next;
 	}
 	*stack = NULL;
+	(*stack_size) = 0;
 }
 
-void	ft_stack_pop(t_stack **stack)
+void	ft_stack_pop(t_stack **stack, int *stack_size)
 {
 	t_stack	*first;
 	t_stack	*last;
 
 	if ((*stack)->next == *stack)
 	{
-		ft_stack_free(stack);
+		ft_stack_free(stack, stack_size);
 		return ;
 	}
 	first = (*stack)->next;
@@ -88,6 +91,7 @@ void	ft_stack_pop(t_stack **stack)
 	last->next = first;
 	first->prev = last;
 	(*stack) = first;
+	(*stack_size)--;
 }
 
 void	ft_stack_swap(t_stack *stack)

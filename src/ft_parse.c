@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 23:37:09 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 01:08:51 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/28 01:28:34 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	ft_check_duplicates(int *ordered, int size)
 	return (SUCCESS);
 }
 
-static int	ft_fill_stack(t_stack **stack,
+static int	ft_fill_stack_a(t_prime *prime,
 	int *unordered, int *ordered, int size)
 {
 	int	i;
@@ -51,7 +51,7 @@ static int	ft_fill_stack(t_stack **stack,
 	while (++i < size)
 	{
 		order = ft_bsearch(unordered[size - i - 1], ordered, size);
-		if (!ft_stack_push(stack, order))
+		if (!ft_stack_push(&prime->stack_a, order, &prime->stack_a_size))
 			return (ERROR);
 	}
 	return (SUCCESS);
@@ -72,7 +72,7 @@ int	ft_parse(int argc, char **argv, t_prime *prime)
 	ft_qsort(ordered, argc - 1);
 	if (!ft_check_duplicates(ordered, argc))
 		return (ERROR);
-	if (!ft_fill_stack(&prime->stack_a, unordered, ordered, argc))
+	if (!ft_fill_stack_a(prime, unordered, ordered, argc))
 		return (ERROR);
 	return (SUCCESS);
 }

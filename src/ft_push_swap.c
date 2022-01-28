@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 23:05:07 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 02:06:08 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/28 02:46:42 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int	main(int argc, char **argv)
 		ft_handle_error(&prime);
 		return (0);
 	}
+	ft_sort(&prime);
 	return (0);
 }

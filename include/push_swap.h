@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 23:05:30 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 02:36:57 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/28 02:46:31 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,7 @@ void	ft_sa(t_prime *prime);
 void	ft_sb(t_prime *prime);
 
 int		ft_parse(int argc, char **argv, t_prime *prime);
+
+int		ft_sort(t_prime *prime);
 
 #endif

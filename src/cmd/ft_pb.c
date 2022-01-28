@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 02:15:58 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 02:16:41 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/28 02:50:34 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_pb(t_prime *prime)
 {
-	if (prime->stack_b)
+	if (prime->stack_a)
 	{
 		if (!ft_stack_push(&prime->stack_b, prime->stack_a->value,
 				&prime->stack_b_size))

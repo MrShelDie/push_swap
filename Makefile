@@ -1,6 +1,7 @@
 _SRC_ =					\
 	ft_parse.c			\
 	ft_push_swap.c		\
+	ft_sort.c			\
 	ft_stack.c
 
 _CMD_ =					\

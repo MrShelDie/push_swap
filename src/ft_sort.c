@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 01:55:27 by nick              #+#    #+#             */
-/*   Updated: 2022/01/29 18:10:23 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/29 20:37:43 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,30 +52,30 @@ static void	ft_triple_sort(t_prime *prime)
 		ft_sa(prime);
 }
 
-static int	ft_get_best_elem_pos(t_stack *stack_b, int stack_b_size)
+static t_stack	*ft_get_best_elem(t_stack *stack_b, int stack_b_size)
 {
-	int	i;
-	int	pos;
-	int	min_score;
+	int		i;
+	int		min_score;
+	t_stack	*best_elem;
 
 	min_score = INT_MAX;
-	pos = 0;
+	best_elem = NULL;
 	i = -1;
 	while (++i < stack_b_size)
 	{
 		if (stack_b->min_score < min_score)
 		{
 			min_score = stack_b->min_score;
-			pos = i;
+			best_elem = stack_b;
 		}
 		stack_b = stack_b->next;
 	}
-	return (pos);
+	return (best_elem);
 }
 
 int	ft_sort(t_prime *prime)
 {
-	int	best_elem_pos;
+	t_stack	*best_elem;
 
 	if (!ft_throw_to_a(prime))
 		return (ERROR);
@@ -84,9 +84,10 @@ int	ft_sort(t_prime *prime)
 	{
 		ft_set_all_score(prime);
 		ft_set_all_ways(prime->stack_b, prime->stack_b_size);
-		best_elem_pos = ft_get_best_elem_pos(
-				prime->stack_b, prime->stack_b_size);
-		(void)best_elem_pos;
+		best_elem = ft_get_best_elem(prime->stack_b, prime->stack_b_size);
+		if (!ft_throw_elem_to_b(prime, best_elem))
+			return (ERROR);
 	}
+	ft_final_sort(prime);
 	return (SUCCESS);
 }

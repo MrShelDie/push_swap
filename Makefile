@@ -1,10 +1,12 @@
 _SRC_ =						\
+	ft_final_sort.c			\
 	ft_parse.c				\
 	ft_push_swap.c			\
 	ft_set_all_ways.c		\
 	ft_set_all_score.c		\
 	ft_sort.c				\
-	ft_stack.c
+	ft_stack.c				\
+	ft_throw_elem_to_b.c
 
 _CMD_ =						\
 	ft_pa.c					\
@@ -17,6 +19,14 @@ _CMD_ =						\
 	ft_rrr.c				\
 	ft_sa.c					\
 	ft_sb.c
+
+_ROTATE_ =					\
+	ft_ra_rr.c				\
+	ft_ra_rrb.c				\
+	ft_rb_rr.c				\
+	ft_rra_rb.c				\
+	ft_rra_rrr.c			\
+	ft_rrb_rrr.c
 
 _SET_WAY_SCORE_ =			\
 	ft_set_ra_rr_score.c	\
@@ -35,10 +45,12 @@ _UTILS_	=					\
 
 SRC 			= ${addprefix src/, ${_SRC_}}
 CMD 			= ${addprefix src/cmd/, ${_CMD_}}
+ROTATE			= ${addprefix src/rotate/, ${_ROTATE_}}
 SET_WAY_SCORE	= ${addprefix src/set_way_score/, ${_SET_WAY_SCORE_}}
 UTILS			= ${addprefix src/utils/, ${_UTILS_}}
 
 SRC 			+= ${CMD}
+SRC				+= ${ROTATE}
 SRC				+= ${SET_WAY_SCORE}
 SRC				+= ${UTILS}
 

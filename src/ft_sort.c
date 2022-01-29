@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 01:55:27 by nick              #+#    #+#             */
-/*   Updated: 2022/01/29 20:37:43 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/29 21:44:24 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static int	ft_throw_to_a(t_prime *prime)
 		{
 			if (!ft_pb(prime))
 				return (ERROR);
+			if (prime->stack_b->value > med)
+				ft_rb(prime);
 		}
 		else
 			ft_ra(prime);

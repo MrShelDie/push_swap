@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 00:14:02 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 01:36:25 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/29 17:36:41 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ t_stack	*ft_stack_new(t_stack **stack, int value, int *stack_size)
 	new->prev = new;
 	new->value = value;
 	new->min_score = -1;
-	new->ra_score = -1;
-	new->rb_score = -1;
-	new->rra_score = -1;
-	new->rrb_score = -1;
-	new->push_way = NONE;
+	new->ra = -1;
+	new->rb = -1;
+	new->rra = -1;
+	new->rrb = -1;
+	new->way = NONE;
 	*stack = new;
 	*stack_size = 1;
 	return (new);
@@ -50,11 +50,11 @@ t_stack	*ft_stack_push(t_stack **stack, int value, int *stack_size)
 	(*stack)->prev = new;
 	new->value = value;
 	new->min_score = -1;
-	new->ra_score = -1;
-	new->rb_score = -1;
-	new->rra_score = -1;
-	new->rrb_score = -1;
-	new->push_way = NONE;
+	new->ra = -1;
+	new->rb = -1;
+	new->rra = -1;
+	new->rrb = -1;
+	new->way = NONE;
 	(*stack) = new;
 	(*stack_size)++;
 	return (new);

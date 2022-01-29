@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 01:55:27 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 03:08:33 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/29 18:10:23 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,41 @@ static void	ft_triple_sort(t_prime *prime)
 		ft_sa(prime);
 }
 
+static int	ft_get_best_elem_pos(t_stack *stack_b, int stack_b_size)
+{
+	int	i;
+	int	pos;
+	int	min_score;
+
+	min_score = INT_MAX;
+	pos = 0;
+	i = -1;
+	while (++i < stack_b_size)
+	{
+		if (stack_b->min_score < min_score)
+		{
+			min_score = stack_b->min_score;
+			pos = i;
+		}
+		stack_b = stack_b->next;
+	}
+	return (pos);
+}
+
 int	ft_sort(t_prime *prime)
 {
+	int	best_elem_pos;
+
 	if (!ft_throw_to_a(prime))
 		return (ERROR);
 	ft_triple_sort(prime);
+	while (prime->stack_b_size > 0)
+	{
+		ft_set_all_score(prime);
+		ft_set_all_ways(prime->stack_b, prime->stack_b_size);
+		best_elem_pos = ft_get_best_elem_pos(
+				prime->stack_b, prime->stack_b_size);
+		(void)best_elem_pos;
+	}
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 23:05:30 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 02:46:31 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/29 18:09:59 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,17 @@ typedef enum e_push_way
 	RRA_RB,
 	RA_RRB,
 	NONE
-}	t_push_way;
+}	t_way;
+
+typedef struct s_way_score
+{
+	int	ra_rr;
+	int	rb_rr;
+	int	rra_rrr;
+	int	rrb_rrr;
+	int	rra_rb;
+	int	ra_rrb;
+}	t_way_score;
 
 typedef struct s_stack
 {
@@ -34,11 +44,11 @@ typedef struct s_stack
 	struct s_stack	*prev;
 	long int		value;
 	int				min_score;
-	int				rb_score;
-	int				rrb_score;
-	int				ra_score;
-	int				rra_score;
-	t_push_way		push_way;
+	int				rb;
+	int				rrb;
+	int				ra;
+	int				rra;
+	t_way			way;
 }	t_stack;
 
 typedef struct s_prime
@@ -78,5 +88,14 @@ void	ft_sb(t_prime *prime);
 int		ft_parse(int argc, char **argv, t_prime *prime);
 
 int		ft_sort(t_prime *prime);
+void	ft_set_all_score(t_prime *prime);
+void	ft_set_all_ways(t_stack *stack_b, int stack_b_size);
+
+void	ft_set_ra_rr_score(t_stack *stack_b, t_way_score *way_score);
+void	ft_set_ra_rrb_score(t_stack *stack_b, t_way_score *way_score);
+void	ft_set_rb_rr_score(t_stack *stack_b, t_way_score *way_score);
+void	ft_set_rra_rb_score(t_stack *stack_b, t_way_score *way_score);
+void	ft_set_rra_rrr_score(t_stack *stack_b, t_way_score *way_score);
+void	ft_set_rrb_rrr_score(t_stack *stack_b, t_way_score *way_score);
 
 #endif

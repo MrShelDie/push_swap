@@ -1,9 +1,11 @@
 _SRC_ =						\
-	ft_final_sort.c			\
 	ft_parse.c				\
+	ft_push_swap_utils.c	\
 	ft_push_swap.c			\
+	ft_restore_stack_a.c	\
 	ft_set_all_ways.c		\
 	ft_set_all_score.c		\
+	ft_small_sort.c			\
 	ft_sort.c				\
 	ft_stack.c				\
 	ft_throw_elem_to_b.c
@@ -37,11 +39,15 @@ _SET_WAY_SCORE_ =			\
 	ft_set_rrb_rrr_score.c
 
 _UTILS_	=					\
+	ft_argv_to_str_tab.c	\
 	ft_atoi.c				\
 	ft_bsearch.c			\
 	ft_isdigit.c			\
 	ft_memcpy.c				\
-	ft_qsort.c
+	ft_qsort.c				\
+	ft_split.c				\
+	ft_strlcpy.c			\
+	ft_strlen.c
 
 SRC 			= ${addprefix src/, ${_SRC_}}
 CMD 			= ${addprefix src/cmd/, ${_CMD_}}

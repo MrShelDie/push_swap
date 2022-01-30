@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 23:37:09 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 02:06:50 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/30 16:52:04 by gannemar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_argv_to_range(int argc, char **argv, int *range)
+static int	ft_argv_to_range(int argc, char **argv, int *unordered)
 {
 	int	i;
 	int	error;
@@ -21,7 +21,7 @@ static int	ft_argv_to_range(int argc, char **argv, int *range)
 	i = -1;
 	while (++i < argc)
 	{
-		range[i] = ft_atoi(argv[i], &error);
+		unordered[i] = ft_atoi(argv[i], &error);
 		if (error == ERROR)
 			break ;
 	}
@@ -57,22 +57,23 @@ static int	ft_fill_stack_a(t_prime *prime,
 	return (SUCCESS);
 }
 
-int	ft_parse(int argc, char **argv, t_prime *prime)
+int	ft_parse(int argc, char **argv, t_prime *prime, t_arg_tab *arg_tab)
 {
-	int	*ordered;
-	int	*unordered;
-
-	unordered = (int *)malloc(sizeof(int) * argc);
-	ordered = (int *)malloc(sizeof(int) * argc);
-	if (!unordered || !ordered)
+	if (!ft_argv_to_str_tab(argc, argv, arg_tab))
 		return (ERROR);
-	if (!ft_argv_to_range(argc, argv, unordered))
+	arg_tab->ordered = (int *)malloc(sizeof(int) * arg_tab->argc);
+	arg_tab->unordered = (int *)malloc(sizeof(int) * arg_tab->argc);
+	if (!arg_tab->ordered || !arg_tab->unordered)
 		return (ERROR);
-	ft_memcpy(ordered, unordered, sizeof(int) * argc);
-	ft_qsort(ordered, argc - 1);
-	if (!ft_check_duplicates(ordered, argc))
+	if (!ft_argv_to_range(arg_tab->argc, arg_tab->argv, arg_tab->unordered))
 		return (ERROR);
-	if (!ft_fill_stack_a(prime, unordered, ordered, argc))
+	ft_memcpy(
+		arg_tab->ordered, arg_tab->unordered, sizeof(int) * arg_tab->argc);
+	ft_qsort(arg_tab->ordered, arg_tab->argc - 1);
+	if (!ft_check_duplicates(arg_tab->ordered, arg_tab->argc))
+		return (ERROR);
+	if (!ft_fill_stack_a(
+			prime, arg_tab->unordered, arg_tab->ordered, arg_tab->argc))
 		return (ERROR);
 	return (SUCCESS);
 }

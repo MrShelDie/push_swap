@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 01:55:27 by nick              #+#    #+#             */
-/*   Updated: 2022/01/29 21:44:24 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/30 21:02:12 by gannemar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,6 @@ static int	ft_throw_to_a(t_prime *prime)
 	return (SUCCESS);
 }
 
-static void	ft_triple_sort(t_prime *prime)
-{
-	int	first;
-	int	second;
-	int	third;
-
-	first = prime->stack_a->value;
-	second = prime->stack_a->next->value;
-	third = prime->stack_a->next->next->value;
-	if ((first < second && first < third && second > third)
-		|| (first > second && first < third && second < third)
-		|| (first > second && first > third && second > third)
-	)
-		ft_sa(prime);
-}
-
 static t_stack	*ft_get_best_elem(t_stack *stack_b, int stack_b_size)
 {
 	int		i;
@@ -65,7 +49,7 @@ static t_stack	*ft_get_best_elem(t_stack *stack_b, int stack_b_size)
 	i = -1;
 	while (++i < stack_b_size)
 	{
-		if (stack_b->min_score < min_score)
+		if (stack_b->min_score <= min_score)
 		{
 			min_score = stack_b->min_score;
 			best_elem = stack_b;
@@ -75,13 +59,37 @@ static t_stack	*ft_get_best_elem(t_stack *stack_b, int stack_b_size)
 	return (best_elem);
 }
 
+static int	ft_is_sorted(t_stack *stack_a, int stack_a_size)
+{
+	int	i;
+
+	i = -1;
+	while (++i < stack_a_size)
+	{
+		if (stack_a->value != i)
+			break ;
+		stack_a = stack_a->next;
+	}
+	if (i == stack_a_size)
+		return (TRUE);
+	return (FALSE);
+}
+
 int	ft_sort(t_prime *prime)
 {
 	t_stack	*best_elem;
 
+	if (ft_is_sorted(prime->stack_a, prime->stack_a_size))
+		return (SUCCESS);
+	if (prime->stack_a_size == 5)
+	{
+		if (!ft_sort_5(prime))
+			return (ERROR);
+		return (SUCCESS);
+	}
 	if (!ft_throw_to_a(prime))
 		return (ERROR);
-	ft_triple_sort(prime);
+	ft_sort_3(prime);
 	while (prime->stack_b_size > 0)
 	{
 		ft_set_all_score(prime);
@@ -90,6 +98,6 @@ int	ft_sort(t_prime *prime)
 		if (!ft_throw_elem_to_b(prime, best_elem))
 			return (ERROR);
 	}
-	ft_final_sort(prime);
+	ft_restore_stack_a(prime);
 	return (SUCCESS);
 }

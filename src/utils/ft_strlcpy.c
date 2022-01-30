@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 23:05:07 by nick              #+#    #+#             */
-/*   Updated: 2022/01/30 16:49:14 by gannemar         ###   ########.fr       */
+/*   Created: 2022/01/30 15:18:39 by gannemar          #+#    #+#             */
+/*   Updated: 2022/01/30 15:18:50 by gannemar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	t_prime		prime;
-	t_arg_tab	arg_tab;
+	size_t	i;
 
-	if (argc == 1)
-		return (0);
-	argc--;
-	argv++;
-	ft_init_arg_tab(&arg_tab);
-	ft_prime_init(&prime);
-	if (!ft_parse(argc, argv, &prime, &arg_tab))
+	if (size == 0)
+		return (ft_strlen(src));
+	i = 0;
+	while (i < (size - 1) && src[i] != '\0')
 	{
-		ft_handle_error(&prime, &arg_tab);
-		return (0);
+		dst[i] = src[i];
+		i++;
 	}
-	ft_sort(&prime);
-	ft_prime_free(&prime);
-	ft_free_arg_tab(&arg_tab);
-	return (0);
+	dst[i] = '\0';
+	return (ft_strlen(src));
 }

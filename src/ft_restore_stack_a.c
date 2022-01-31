@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_restore_stack_a.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 20:25:43 by nick              #+#    #+#             */
-/*   Updated: 2022/01/30 21:09:03 by gannemar         ###   ########.fr       */
+/*   Updated: 2022/01/31 02:51:42 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void	ft_restore_stack_a(t_prime *prime)
 	if (idx <= prime->stack_a_size / 2)
 	{
 		while (idx-- > 0)
-			ft_ra(prime);
+			ft_ra(prime, TRUE);
 	}
 	else
 	{
 		while (idx++ < prime->stack_a_size)
-			ft_rra(prime);
+			ft_rra(prime, TRUE);
 	}
 	return ;
 }

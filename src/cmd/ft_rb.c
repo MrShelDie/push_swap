@@ -6,15 +6,16 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 02:20:04 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 02:20:34 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/31 02:50:45 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rb(t_prime *prime)
+void	ft_rb(t_prime *prime, int print)
 {
 	if (prime->stack_b)
 		prime->stack_b = prime->stack_b->next;
-	write(1, "rb\n", 3);
+	if (print)
+		write(1, "rb\n", 3);
 }

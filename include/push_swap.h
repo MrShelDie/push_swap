@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 23:05:30 by nick              #+#    #+#             */
-/*   Updated: 2022/01/30 21:02:11 by gannemar         ###   ########.fr       */
+/*   Updated: 2022/01/31 02:44:17 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 char	**ft_split(char const *s, char c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 t_stack	*ft_stack_new(t_stack **stack, int value, int *stack_size);
 t_stack	*ft_stack_push(t_stack **stack, int value, int *stack_size);
@@ -88,16 +89,16 @@ void	ft_stack_free(t_stack **stack, int *stack_size);
 void	ft_stack_pop(t_stack **stack, int *stack_size);
 void	ft_stack_swap(t_stack *stack);
 
-int		ft_pa(t_prime *prime);
-int		ft_pb(t_prime *prime);
-void	ft_ra(t_prime *prime);
-void	ft_rb(t_prime *prime);
-void	ft_rr(t_prime *prime);
-void	ft_rra(t_prime *prime);
-void	ft_rrb(t_prime *prime);
-void	ft_rrr(t_prime *prime);
-void	ft_sa(t_prime *prime);
-void	ft_sb(t_prime *prime);
+int		ft_pa(t_prime *prime, int print);
+int		ft_pb(t_prime *prime, int print);
+void	ft_ra(t_prime *prime, int print);
+void	ft_rb(t_prime *prime, int print);
+void	ft_rr(t_prime *prime, int print);
+void	ft_rra(t_prime *prime, int print);
+void	ft_rrb(t_prime *prime, int print);
+void	ft_rrr(t_prime *prime, int print);
+void	ft_sa(t_prime *prime, int print);
+void	ft_sb(t_prime *prime, int print);
 
 void	ft_ra_rr(t_prime *prime, t_stack *elem);
 void	ft_rb_rr(t_prime *prime, t_stack *elem);
@@ -112,6 +113,7 @@ char	**ft_argv_to_str_tab(int argc, char **argv, t_arg_tab *arg_tab);
 int		ft_sort(t_prime *prime);
 void	ft_sort_3(t_prime *prime);
 int		ft_sort_5(t_prime *prime);
+int		ft_is_sorted(t_stack *stack_a, int stack_a_size);
 void	ft_set_all_score(t_prime *prime);
 void	ft_set_all_ways(t_stack *stack_b, int stack_b_size);
 int		ft_throw_elem_to_b(t_prime *prime, t_stack *elem);

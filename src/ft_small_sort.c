@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_small_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 20:39:34 by gannemar          #+#    #+#             */
-/*   Updated: 2022/01/30 21:11:24 by gannemar         ###   ########.fr       */
+/*   Updated: 2022/01/31 02:53:10 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static int	ft_throw_to_a(t_prime *prime)
 	i = -1;
 	while (++i < 2)
 	{
-		if (!ft_pa(prime))
+		if (!ft_pa(prime, TRUE))
 			return (ERROR);
 		if (prime->stack_a->value != 0)
-			ft_ra(prime);
+			ft_ra(prime, TRUE);
 	}
 	return (SUCCESS);
 }
@@ -40,7 +40,7 @@ void	ft_sort_3(t_prime *prime)
 		|| (first > second && first < third && second < third)
 		|| (first > second && first > third && second > third)
 	)
-		ft_sa(prime);
+		ft_sa(prime, TRUE);
 }
 
 int	ft_sort_5(t_prime *prime)
@@ -54,11 +54,11 @@ int	ft_sort_5(t_prime *prime)
 	{
 		if (prime->stack_a->value == min || prime->stack_a->value == max)
 		{
-			if (!ft_pb(prime))
+			if (!ft_pb(prime, TRUE))
 				return (ERROR);
 		}
 		else
-			ft_ra(prime);
+			ft_ra(prime, TRUE);
 	}
 	ft_sort_3(prime);
 	ft_restore_stack_a(prime);

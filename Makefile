@@ -1,14 +1,17 @@
-_SRC_ =						\
-	ft_parse.c				\
-	ft_push_swap_utils.c	\
+_PUSH_SWAP_ =				\
 	ft_push_swap.c			\
 	ft_restore_stack_a.c	\
 	ft_set_all_ways.c		\
 	ft_set_all_score.c		\
 	ft_small_sort.c			\
 	ft_sort.c				\
+	ft_throw_elem_to_b.c	\
+
+_GENERAL_ =					\
+	ft_is_sorted.c			\
+	ft_parse.c				\
+	ft_push_swap_init.c		\
 	ft_stack.c				\
-	ft_throw_elem_to_b.c
 
 _CMD_ =						\
 	ft_pa.c					\
@@ -47,41 +50,66 @@ _UTILS_	=					\
 	ft_qsort.c				\
 	ft_split.c				\
 	ft_strlcpy.c			\
-	ft_strlen.c
+	ft_strlen.c				\
+	ft_strncmp.c
 
-SRC 			= ${addprefix src/, ${_SRC_}}
+_BONUS_ =					\
+	ft_checker.c			\
+	get_next_line.c			\
+	get_next_line_utils.c
+
+PUSH_SWAP 		= ${addprefix src/, ${_PUSH_SWAP_}}
+GENERAL			= ${addprefix src/, ${_GENERAL_}}
 CMD 			= ${addprefix src/cmd/, ${_CMD_}}
 ROTATE			= ${addprefix src/rotate/, ${_ROTATE_}}
 SET_WAY_SCORE	= ${addprefix src/set_way_score/, ${_SET_WAY_SCORE_}}
 UTILS			= ${addprefix src/utils/, ${_UTILS_}}
 
-SRC 			+= ${CMD}
-SRC				+= ${ROTATE}
-SRC				+= ${SET_WAY_SCORE}
-SRC				+= ${UTILS}
+BONUS			= ${addprefix src/bonus/, ${_BONUS_}}
 
-OBJ				= ${SRC:.c=.o}
+PUSH_SWAP 		+= ${GENERAL}
+PUSH_SWAP 		+= ${CMD}
+PUSH_SWAP		+= ${ROTATE}
+PUSH_SWAP		+= ${SET_WAY_SCORE}
+PUSH_SWAP		+= ${UTILS}
+
+BONUS			+= ${GENERAL}
+BONUS 			+= ${CMD}
+BONUS			+= ${ROTATE}
+BONUS			+= ${UTILS}
+
+OBJ				= ${PUSH_SWAP:.c=.o}
+BONUS_OBJ		= ${BONUS:.c=.o}
+
 DEP				= ${OBJ:.o=.d}
+BONUS_DEP		= ${BONUS_OBJ:.o=.d}
 
 NAME 			= push_swap
+BONUS_NAME		= checker
 INCDIR			= include
 CC 				= gcc
 CFLAGS 			= -Wall -Werror -Wextra -g		# TODO: DELETE -g
 CPPFLAGS		= -MMD -I./${INCDIR}
 
-all:		${NAME}
+all:			${NAME}
 
-${NAME}:	${OBJ}
+${NAME}:		${OBJ}
 	${CC} ${CFLAGS} ${OBJ} -o ${NAME}
 
-clean:
-	${RM} ${DEP} ${OBJ}
+bonus:			${BONUS_NAME}
 
-fclean:		clean
-	${RM} ${NAME}
+${BONUS_NAME}: ${BONUS_OBJ}
+	${CC} ${CFLAGS} ${BONUS_OBJ} -o ${BONUS_NAME}
+
+clean:
+	${RM} ${DEP} ${BONUS_DEP} ${OBJ} ${BONUS_OBJ}
+
+fclean:			clean
+	${RM} ${NAME} ${BONUS_NAME}
 
 re:			fclean all
 
 .PHONY:		all clean fclean re
 
 -include ${DEP}
+-include ${BONUS_DEP}

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rr.c                                            :+:      :+:    :+:   */
+/*   ft_is_sorted.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/28 02:31:29 by nick              #+#    #+#             */
-/*   Updated: 2022/01/31 02:51:19 by nick             ###   ########.fr       */
+/*   Created: 2022/01/31 02:21:48 by nick              #+#    #+#             */
+/*   Updated: 2022/01/31 02:22:06 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rr(t_prime *prime, int print)
+int	ft_is_sorted(t_stack *stack_a, int stack_a_size)
 {
-	if (prime->stack_a)
-		prime->stack_a = prime->stack_a->next;
-	if (prime->stack_b)
-		prime->stack_b = prime->stack_b->next;
-	if (print)
-		write(1, "rr\n", 3);
+	int	i;
+
+	i = -1;
+	while (++i < stack_a_size)
+	{
+		if (stack_a->value != i)
+			break ;
+		stack_a = stack_a->next;
+	}
+	if (i == stack_a_size)
+		return (TRUE);
+	return (FALSE);
 }

@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 18:45:20 by nick              #+#    #+#             */
-/*   Updated: 2022/01/29 19:21:57 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/31 02:47:22 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_throw_elem_to_b(t_prime *prime, t_stack *elem)
 		ft_rra_rb(prime, elem);
 	else
 		ft_ra_rrb(prime, elem);
-	if (!ft_pa(prime))
+	if (!ft_pa(prime, TRUE))
 		return (ERROR);
 	return (SUCCESS);
 }

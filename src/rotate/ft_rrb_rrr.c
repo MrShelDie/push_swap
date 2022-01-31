@@ -6,7 +6,7 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/29 19:06:45 by nick              #+#    #+#             */
-/*   Updated: 2022/01/29 19:07:14 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/31 02:52:36 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	ft_rrb_rrr(t_prime *prime, t_stack *elem)
 {
 	while (elem->rra > 0)
 	{
-		ft_rrr(prime);
+		ft_rrr(prime, TRUE);
 		elem->rra--;
 		elem->rrb--;
 	}
 	while (elem->rrb-- > 0)
-		ft_rrb(prime);
+		ft_rrb(prime, TRUE);
 }

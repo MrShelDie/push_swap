@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gannemar <gannemar@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 01:55:27 by nick              #+#    #+#             */
-/*   Updated: 2022/01/30 21:02:12 by gannemar         ###   ########.fr       */
+/*   Updated: 2022/01/31 02:50:32 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static int	ft_throw_to_a(t_prime *prime)
 			&& prime->stack_a->value != med
 			&& prime->stack_a->value != max)
 		{
-			if (!ft_pb(prime))
+			if (!ft_pb(prime, TRUE))
 				return (ERROR);
 			if (prime->stack_b->value > med)
-				ft_rb(prime);
+				ft_rb(prime, TRUE);
 		}
 		else
-			ft_ra(prime);
+			ft_ra(prime, TRUE);
 	}
 	return (SUCCESS);
 }
@@ -57,22 +57,6 @@ static t_stack	*ft_get_best_elem(t_stack *stack_b, int stack_b_size)
 		stack_b = stack_b->next;
 	}
 	return (best_elem);
-}
-
-static int	ft_is_sorted(t_stack *stack_a, int stack_a_size)
-{
-	int	i;
-
-	i = -1;
-	while (++i < stack_a_size)
-	{
-		if (stack_a->value != i)
-			break ;
-		stack_a = stack_a->next;
-	}
-	if (i == stack_a_size)
-		return (TRUE);
-	return (FALSE);
 }
 
 int	ft_sort(t_prime *prime)

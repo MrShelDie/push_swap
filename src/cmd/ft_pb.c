@@ -6,13 +6,13 @@
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 02:15:58 by nick              #+#    #+#             */
-/*   Updated: 2022/01/28 02:50:34 by nick             ###   ########.fr       */
+/*   Updated: 2022/01/31 02:48:54 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_pb(t_prime *prime)
+int	ft_pb(t_prime *prime, int print)
 {
 	if (prime->stack_a)
 	{
@@ -21,6 +21,7 @@ int	ft_pb(t_prime *prime)
 			return (ERROR);
 		ft_stack_pop(&prime->stack_a, &prime->stack_a_size);
 	}
-	write (1, "pb\n", 3);
+	if (print)
+		write (1, "pb\n", 3);
 	return (SUCCESS);
 }

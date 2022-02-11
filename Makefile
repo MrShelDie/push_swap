@@ -88,7 +88,7 @@ NAME 			= push_swap
 BONUS_NAME		= checker
 INCDIR			= include
 CC 				= gcc
-CFLAGS 			= -Wall -Werror -Wextra -g		# TODO: DELETE -g
+CFLAGS 			= -Wall -Werror -Wextra
 CPPFLAGS		= -MMD -I./${INCDIR}
 
 all:			${NAME}

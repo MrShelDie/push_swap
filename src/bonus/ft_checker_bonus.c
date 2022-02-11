@@ -1,17 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checker.c                                       :+:      :+:    :+:   */
+/*   ft_checker_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nick <nick@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 01:13:32 by nick              #+#    #+#             */
-/*   Updated: 2022/01/31 03:09:32 by nick             ###   ########.fr       */
+/*   Updated: 2022/02/11 19:05:20 by nick             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "get_next_line.h"
+
+static int	ft_is_cmd_exist(char *cmd)
+{
+	if (!ft_strncmp(cmd, "pa\n", 4) || !ft_strncmp(cmd, "pb\n", 4)
+		|| !ft_strncmp(cmd, "ra\n", 4) || !ft_strncmp(cmd, "rb\n", 4)
+		|| !ft_strncmp(cmd, "rr\n", 4) || !ft_strncmp(cmd, "rra\n", 5)
+		|| !ft_strncmp(cmd, "rrb\n", 5) || !ft_strncmp(cmd, "rrr\n", 5)
+		|| !ft_strncmp(cmd, "sa\n", 4) || !ft_strncmp(cmd, "sb\n", 4)
+	)
+		return (SUCCESS);
+	return (ERROR);
+}
 
 static int	ft_execute_cmd(t_prime *prime, char *cmd)
 {
@@ -35,7 +47,7 @@ static int	ft_execute_cmd(t_prime *prime, char *cmd)
 		ft_sa(prime, FALSE);
 	else if (!ft_strncmp(cmd, "sb\n", 4))
 		ft_sb(prime, FALSE);
-	if (!ft_strncmp(cmd, "pa\n", 4) && !ft_strncmp(cmd, "pb\n", 4))
+	if (!ft_is_cmd_exist(cmd))
 		return (ERROR);
 	return (SUCCESS);
 }

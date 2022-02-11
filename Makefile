@@ -25,38 +25,38 @@ _CMD_ =						\
 	ft_sa.c					\
 	ft_sb.c
 
-_ROTATE_ =					\
-	ft_ra_rr.c				\
-	ft_ra_rrb.c				\
-	ft_rb_rr.c				\
-	ft_rra_rb.c				\
-	ft_rra_rrr.c			\
+_ROTATE_ =						\
+	ft_ra_rr.c					\
+	ft_ra_rrb.c					\
+	ft_rb_rr.c					\
+	ft_rra_rb.c					\
+	ft_rra_rrr.c				\
 	ft_rrb_rrr.c
 
-_SET_WAY_SCORE_ =			\
-	ft_set_ra_rr_score.c	\
-	ft_set_ra_rrb_score.c	\
-	ft_set_rb_rr_score.c	\
-	ft_set_rra_rb_score.c	\
-	ft_set_rra_rrr_score.c	\
+_SET_WAY_SCORE_ =				\
+	ft_set_ra_rr_score.c		\
+	ft_set_ra_rrb_score.c		\
+	ft_set_rb_rr_score.c		\
+	ft_set_rra_rb_score.c		\
+	ft_set_rra_rrr_score.c		\
 	ft_set_rrb_rrr_score.c
 
-_UTILS_	=					\
-	ft_argv_to_str_tab.c	\
-	ft_atoi.c				\
-	ft_bsearch.c			\
-	ft_isdigit.c			\
-	ft_memcpy.c				\
-	ft_qsort.c				\
-	ft_split.c				\
-	ft_strlcpy.c			\
-	ft_strlen.c				\
+_UTILS_	=						\
+	ft_argv_to_str_tab.c		\
+	ft_atoi.c					\
+	ft_bsearch.c				\
+	ft_isdigit.c				\
+	ft_memcpy.c					\
+	ft_qsort.c					\
+	ft_split.c					\
+	ft_strlcpy.c				\
+	ft_strlen.c					\
 	ft_strncmp.c
 
-_BONUS_ =					\
-	ft_checker.c			\
-	get_next_line.c			\
-	get_next_line_utils.c
+_BONUS_ =						\
+	ft_checker_bonus.c			\
+	get_next_line_bonus.c		\
+	get_next_line_utils_bonus.c
 
 PUSH_SWAP 		= ${addprefix src/, ${_PUSH_SWAP_}}
 GENERAL			= ${addprefix src/, ${_GENERAL_}}
